@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: update repository index
+    dnf: 
+      update_cache: yes
+
+  - name: install xterm package
+    dnf:
+      name: xterm
+      state: absent
