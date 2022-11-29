@@ -1,0 +1,24 @@
+---
+
+- hosts: servers # all
+  become: true
+  tasks:
+
+  - name: install docker package
+    apt: 
+      name: docker
+      state: absent
+
+  - name: remove apache2 package
+    apt:
+      name: apache2
+      state: absent
+
+
+  - name: update repository index
+    apt:
+      update_cache: yes
+
+  - name: remove outdated packages
+    apt:
+      autoremove: true
