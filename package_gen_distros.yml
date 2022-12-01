@@ -4,27 +4,24 @@
   become: true
   tasks:
 
-  - name: install docker package
+  - name: install docker and apache2 packages
     apt: 
-      name: docker
+      name: 
+        - docker
+        - apache2
       state: latest
-    when: ansible_distribution == "Ubuntu"
-
-  - name: update repository index
-    apt:
       update_cache: yes
-    when: ansible_distribution == "Ubuntu"
-
-  - name: install apache2 package
-    apt:
-      name: apache2
-      state: latest
-    when: ansible_distribution == "Ubuntu"
-
-  - name: remove outdated packages
-    apt:
       autoremove: true
-    when: ansible_distribution == "Ubuntu"
+    when: ansible_distribution in ["Ubuntu", "Debian"]
 
 
-
+  - name: install docker httpd and php packages
+    dnf: 
+      name:
+        - docker
+        - httpd
+        - php
+      state: latest
+      autoremove: true
+      update_cache: yes
+    when: ansible_distribution == "CentOS"

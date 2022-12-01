@@ -1,9 +1,9 @@
 [servers] 
-192.168.178.55 ansible_user=ukouche
-192.168.178.56 ansible_user=ukouche 
-192.168.178.57 ansible_user=ukouche
-139.162.167.70 ansible_user=root
-192.168.178.59 ansible_user=victory
+192.168.178.55 ansible_user=ukouche apache_package=apache2 
+192.168.178.56 ansible_user=ukouche apache_package=apache2
+192.168.178.57 ansible_user=ukouche apache_package=apache2
+139.162.167.70 ansible_user=root apache_package=apache2
+192.168.178.59 ansible_user=victory apache_package=httpd 
 
 
 [servers:var]
