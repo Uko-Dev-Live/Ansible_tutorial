@@ -1,0 +1,15 @@
+---
+
+- hosts: servers # all
+  become: true
+  tasks:
+
+  - name: install docker and apache packages
+    package: 
+      name: 
+#        - "{{ docker_package }}"
+        - "{{ apache_package }}"
+#        - "{{ php_package }}"
+      state: latest
+      update_cache: yes
+      autoremove: false # true
