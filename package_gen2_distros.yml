@@ -2,6 +2,7 @@
 
 - hosts:  all 
   become: true
+  tags: always
   pre_tasks:
 
   - name: install updates (CentOS)
@@ -22,6 +23,9 @@
   tasks:
 
   - name: install docker and apache2 packages
+    tags:
+      - ap2
+      - dock
     apt: 
       name: 
         - docker
@@ -32,6 +36,9 @@
 
 
   - name: install docker httpd and php packages
+    tags:
+      - php
+      - http
     dnf: 
       name:
     #    - docker
@@ -47,6 +54,8 @@
   tasks:
   
   - name: install mariadb package (CentOS)
+    tags: 
+      - mdb
     dnf:
       name: mariadb
       state: latest
@@ -54,6 +63,8 @@
 
  
   - name: install mariadb package (Ubuntu)
+    tags: 
+      - db-ubu
     apt:
       name: mariadb-server
       state: latest
@@ -62,6 +73,9 @@
 
 - hosts: fileservers
   become: true
+  tags:
+    - fserv
+    - fils
   tasks:
   
   - name: install samba package
