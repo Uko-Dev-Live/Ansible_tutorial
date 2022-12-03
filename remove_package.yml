@@ -11,6 +11,9 @@
         - apache2
         - mariadb-server
       state: absent
+      purge: yes
+      autoremove: yes
+      autoclean: yes
     when: ansible_distribution == "Ubuntu"
 
 
@@ -21,6 +24,9 @@
         - php
         - mariadb
       state: absent
+      purge: yes
+      autoremove: yes
+      autoclean: yes
     when: ansible_distribution == "CentOS"
 
 
@@ -32,3 +38,6 @@
     package:
       name: samba
       state: absent
+      purge: yes
+      autoremove: yes
+      autoclean: yes
