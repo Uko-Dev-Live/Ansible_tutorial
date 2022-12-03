@@ -34,7 +34,11 @@
       autoremove: true
     when: ansible_distribution in ["Ubuntu", "Debian"]
 
-
+  - name: run a script for backup file
+    tags: scr
+    script: ./backup.sh
+    when: ansible_distribution == "Ubuntu"
+      
   - name: install docker httpd and php packages
     tags:
       - php

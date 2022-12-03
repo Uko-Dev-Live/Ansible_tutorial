@@ -1,5 +1,6 @@
 
 [webservers]
+139.162.167.70 ansible_user=root
 192.168.178.55 ansible_user=ukouche
 
 [dbservers]
