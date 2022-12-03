@@ -9,7 +9,8 @@
   - name: install updates (Ubuntu)
     apt:
       upgrade: dist
-      update_cache: no 
+      update_cache: no
+      changed_when: false 
     when: ansible_distribution == "Ubuntu"
 
 

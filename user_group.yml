@@ -1,0 +1,11 @@
+---
+
+- hosts:  all 
+  become: true
+  tags: always
+
+
+  - name: Create user guest
+    user:
+      name: guest
+      group: root 
