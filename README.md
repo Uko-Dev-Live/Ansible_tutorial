@@ -1,7 +1,5 @@
 # Automation with Ansible
 
-ANSIBLE
-
 Ansible is an automation as well as server configuration software employed in managment of numerous deployed linux servers.
 
 The projects contained herein are beginners personal projects and focus on: 
