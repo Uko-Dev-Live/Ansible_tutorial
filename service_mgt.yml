@@ -1,10 +1,14 @@
 ---
+- hosts: base
+  become: true
+  roles:
+    - base
+
 
 - hosts: webservers
   become: true
   roles:
     - webservers
-
 
 
 - hosts: dbservers
