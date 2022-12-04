@@ -1,45 +1,19 @@
 ---
 
-- hosts:  all 
-  become: true
-  tags: always
-  pre_tasks:
-
-
-  - name: install updates (Ubuntu)
-    apt:
-      upgrade: dist
-      update_cache: no
-      changed_when: false 
-    when: ansible_distribution == "Ubuntu"
-
-
 - hosts: webservers
   become: true
-  tasks:
+  roles:
+    - webservers
 
 
-  - name: restart apache (Ubuntu)
-    tags: start apache2
-    service:
-      name: apache2
-      state: restarted 
-    when: ansible_distribution == "Ubuntu"
-      
-  - name: start httpd (CentOS)
-    tags:
-      - start-httpd
-    service: 
-      name: httpd
-      state: started
-      enabled: yes
-    when: ansible_distribution == "CentOS"
-    register: httpd
 
-  - name: restart httpd (CentOS)
-    tags: restart httpd
-    service:
-      name: httpd
-      state: restarted
-    when: httpd.changed
+- hosts: dbservers
+  become: true
+  roles:
+    - dbservers
 
+
+- hosts: fileservers
+  become: true
+  roles:
+    - fileservers
